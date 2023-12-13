@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative './part1'
+require_relative './solution'
 
 class PartOneTest < Minitest::Test
 
