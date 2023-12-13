@@ -1,6 +1,4 @@
-require 'debug'
-
-test_file_path = File.expand_path('input.txt', __dir__)
+test_file_path = File.expand_path('test_input.txt', __dir__)
 test_input     = File.read(test_file_path)
 test_file_data = test_input.split("\n")
 
@@ -23,27 +21,6 @@ class Hand
     cards.tally.values.sort.reverse
   end
 
-  def hand_type
-    # No longer using this but might go back to it as it's more expressive of the domain
-    # Would need to then generate a hand_type score for sorting
-    case hand_shape
-    when [5]
-      "five"
-    when [4,1]
-      "four"
-    when [3,2]
-      "full"
-    when [3,1,1]
-      "three"
-    when [2,2,1]
-      "twopair"
-    when [2,1,1,1]
-      "onepair"
-    else
-      "high"
-    end
-  end
-
   def card_score(card)
     # -> 0-12
     CARD_SCORES[card]
@@ -56,7 +33,6 @@ end
 
 def sort_hands(hands)
   hands.sort_by do |hand|
-    # debugger
     [hand.hand_shape, hand.cards_score]
   end
 end
